@@ -6,13 +6,14 @@ function setup_pScope(pScope){
   pScope.draw_layer_boundaries(false);
   pScope.set_direction(CCW);
   pScope.set_slice_count(SLICE_COUNT);
+ pScope.load_image("test" , "png");
 }
 
 function setup_layers(pScope){
 
   new PLayer(null, 220);  //lets us draw the whole circle background, ignoring the boundaries
 
-  var layer1 = new PLayer(faces);
+  var layer1 = new PLayer(test);
   layer1.mode( SWIRL(5) );
   layer1.set_boundary( 200, 1000 );
 
@@ -22,7 +23,7 @@ function setup_layers(pScope){
 }
 
 function faces(x, y, animation, pScope){
-  
+  pScope.draw_image("ghost",x,y);
   scale(animation.frame*2);
 
   ellipse(0,0,50,50); // draw head
