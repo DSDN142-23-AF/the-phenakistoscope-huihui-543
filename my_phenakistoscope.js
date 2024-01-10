@@ -23,7 +23,7 @@ function setup_layers(pScope){
 }
 
 function faces(x, y, animation, pScope){
-  pScope.draw_image("ghost",x,y);
+  pScope.draw_image("test",x,y);
   scale(animation.frame*2);
 
   ellipse(0,0,50,50); // draw head
