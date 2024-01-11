@@ -30,5 +30,3 @@ function cupidLayer(x, y, animation, pScope){
 }
 
 
-
-
