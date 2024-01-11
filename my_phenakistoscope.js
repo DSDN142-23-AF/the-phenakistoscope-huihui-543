@@ -15,7 +15,7 @@ function setup_layers(pScope){
 
   new PLayer(null, 220);  //lets us draw the whole circle background, ignoring the boundaries
 
-  var cupidSequence = new PLayer(cupid);
+  var cupidSequence = new PLayer(cupidLayer);
   cupidSequence.mode( SWIRL(3) );
   cupidSequence.set_boundary( 200, 1000 );
 
@@ -25,7 +25,7 @@ function setup_layers(pScope){
 }
 
 
-function cupid(x, y, animation, pscope){
+function cupidLayer(x, y, animation, pScope){
   pScope.draw_image_from_sequence("cupid", 0, -100, animation.frame);
 }
 
