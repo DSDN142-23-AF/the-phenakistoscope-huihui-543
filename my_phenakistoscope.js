@@ -26,7 +26,7 @@ function setup_layers(pScope){
   // layer2.set_boundary( 0, 400 );
 
 function flowerLayer(x, y, pScope) {
-  drawFlower(x, y, 100);
+  drawflower(x, y, 100);
 }
 
 var flower = new PLayer(flowerLayer);
