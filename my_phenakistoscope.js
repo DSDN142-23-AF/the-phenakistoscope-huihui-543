@@ -8,13 +8,13 @@ function setup_pScope(pScope){
   pScope.set_slice_count(10);
   pScope.load_image("heart_circle" , "png");
   pScope.load_image_sequence("cupid" , "png", 10);
-  pScope.fill_background(173, 216, 230)
+  
 }
 
 
 
 function setup_layers(pScope){
-
+ 
   new PLayer(null, 220);  //lets us draw the whole circle background, ignoring the boundaries
 
   var cupidSequence = new PLayer(cupidLayer);
@@ -25,12 +25,12 @@ function setup_layers(pScope){
   // layer2.mode( RING );
   // layer2.set_boundary( 0, 400 );
 
-function heartLayer(x, y, pScope) {
-  drawHeart(x, y, 100);
+function flowerLayer(x, y, pScope) {
+  drawFlower(x, y, 100);
 }
 
-var heart = new PLayer(heartLayer);
-heart.set_boundary(0, 200);
+var flower = new PLayer(flowerLayer);
+flower.set_boundary(0, 200);
 }
 
 
