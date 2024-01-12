@@ -8,7 +8,7 @@ function setup_pScope(pScope){
   pScope.set_slice_count(10);
   pScope.load_image("heart_circle" , "png");
   pScope.load_image_sequence("cupid" , "png", 10);
-  
+  pScope.fill_background(173, 216, 230)
 }
 
 
@@ -39,7 +39,7 @@ function cupidLayer(x, y, animation, pScope){
 }
 
 function drawflower(x, y, size) {
-  fill(255, 0, 0); // Set the fill color to red
+  fill(255, 0, 0); // red
   beginShape();
   vertex(x + size / 5, y + size / 100); // 
   bezierVertex(x - size / 10, y - size / 2, x - size / 4, y - size, x + size / 2, y - size);
