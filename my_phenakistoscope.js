@@ -1,49 +1,52 @@
 const SLICE_COUNT = 10;
 
 function setup_pScope(pScope){
-  pScope.output_mode(ANIMATED_DISK);
+  pScope.output_mode(OUTPUT_GIF(1000));
   pScope.scale_for_screen(true);
   pScope.draw_layer_boundaries(false);
   pScope.set_direction(CCW);
-  pScope.set_slice_count(SLICE_COUNT);
+  pScope.set_slice_count(10);
+  pScope.load_image_sequence("cupid" , "png", 10);
+  pScope.load_image("heart" , "png");
 }
 
 function setup_layers(pScope){
+ 
+  new PLayer(null, 100, 300, 300);  //lets us draw the whole circle background, ignoring the boundaries
 
-  new PLayer(null, 220);  //lets us draw the whole circle background, ignoring the boundaries
+  var cupidSequence = new PLayer(cupidLayer);
+  cupidSequence.mode( SWIRL(2) );
+  cupidSequence.set_boundary(200, 950);
 
-  var layer1 = new PLayer(faces);
-  layer1.mode( SWIRL(5) );
-  layer1.set_boundary( 200, 1000 );
+  var layer2 = new PLayer(heartLayer);
+   layer2.mode( SWIRL (1) );
+   layer2.set_boundary( 0, 1100 );
 
-  var layer2 = new PLayer(squares);
-  layer2.mode( RING );
-  layer2.set_boundary( 0, 400 );
+var flower = new PLayer(flowerLayer);
+flower.set_boundary(0, 200);
 }
 
-function faces(x, y, animation, pScope){
-  
-  scale(animation.frame*2);
-
-  ellipse(0,0,50,50); // draw head
-  fill(30);
-  ellipse(-10,-10,10,10); //draw eye
-  ellipse(10,-10,10,10); // draw eye
-  arc(0,10,20,10,0,180); // draw mouth
-
+function flowerLayer(x, y, pScope) {
+  drawflower(x, y, 100);
+}
+function cupidLayer(x, y, animation, pScope){
+  pScope.draw_image_from_sequence("cupid", 0, -50, animation.frame);
+}
+function heartLayer(x, y, animation, pScope){
+  pScope.draw_image("heart",300,1000);
+  rotate(360*animation.frame);
+}
+function drawflower(x, y, size) {
+  fill(255, 0, 0); // red
+  beginShape();
+  vertex(x + size / 5, y + size / 100); // 
+  bezierVertex(x - size / 10, y - size / 2, x - size / 4, y - size, x + size / 2, y - size);
+  bezierVertex(x + size * 2, y - size, x + size * 1.5, y - size / 2, x + size / 2, y + size / 4); // 
+  endShape(CLOSE);
 }
 
-function squares(x, y, animation, pScope){
 
-  // this is how you set up a background for a specific layer
-  let angleOffset = (360 / SLICE_COUNT) / 2
-  let backgroundArcStart = 270 - angleOffset;
-  let backgroundArcEnd = 270 + angleOffset;
 
-  fill(66, 135, 245)
-  arc(x,y,800,800,backgroundArcStart,backgroundArcEnd); // draws "pizza slice" in the background
 
-  fill(255)
-  rect(-10,-300-animation.wave()*50,20,20) // .wave is a cosine wave btw
 
-}
+

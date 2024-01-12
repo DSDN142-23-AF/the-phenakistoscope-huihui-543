@@ -59,8 +59,8 @@ This image must have already been loaded in the load_image function.
 
 
 
-pScope.load_image_sequence("...." , "....", ....)
 
+pScope.load_image_sequence("...." , "....", ....)
 For this to work, your image sequence must be in a folder in the assets folder.
 That folder must have the same name as the files in the image sequence.
 The images must be named as such: catRun_0.png     catRun_1.png    ....ect and these would be in a folder called catRun.
