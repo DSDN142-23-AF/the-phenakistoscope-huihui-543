@@ -6,12 +6,9 @@ function setup_pScope(pScope){
   pScope.draw_layer_boundaries(false);
   pScope.set_direction(CCW);
   pScope.set_slice_count(10);
-  pScope.load_image("heart_circle" , "png");
   pScope.load_image_sequence("cupid" , "png", 10);
-  
+  pScope.load_image("heart" , "png");
 }
-
-
 
 function setup_layers(pScope){
  
@@ -21,18 +18,20 @@ function setup_layers(pScope){
   cupidSequence.mode( SWIRL(2) );
   cupidSequence.set_boundary(200, 1000 );
 
-  // var layer2 = new PLayer(squares);
-  // layer2.mode( RING );
-  // layer2.set_boundary( 0, 400 );
+  var layer2 = new PLayer(heartLayer);
+   layer2.mode( RING );
+   layer2.set_boundary( 0, 400 );
 
 function flowerLayer(x, y, pScope) {
   drawflower(x, y, 100);
+
+function heartLayer(x, y, animation, pScope)
+pScope.draw_image("heart",x,y);
 }
 
 var flower = new PLayer(flowerLayer);
 flower.set_boundary(0, 200);
 }
-
 
 function cupidLayer(x, y, animation, pScope){
   pScope.draw_image_from_sequence("cupid", 0, -50, animation.frame);
@@ -46,6 +45,8 @@ function drawflower(x, y, size) {
   bezierVertex(x + size * 2, y - size, x + size * 1.5, y - size / 2, x + size / 2, y + size / 4); // 
   endShape(CLOSE);
 }
+
+
 
 
 
